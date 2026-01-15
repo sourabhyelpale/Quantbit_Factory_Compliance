@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:case_number",
+ "creation": "2026-01-15 12:37:09.297293",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tlyx",
+  "case_number",
+  "authority",
+  "party_name",
+  "risk_level",
+  "assigned_leagal_officer",
+  "column_break_mncl",
+  "case_type",
+  "factory",
+  "case_status",
+  "next_hearing_date",
+  "potential_liability",
+  "section_break_qecr",
+  "hearing_log",
+  "section_break_djvh",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tlyx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "case_number",
+   "fieldtype": "Data",
+   "label": "Case Number",
+   "unique": 1
+  },
+  {
+   "fieldname": "case_type",
+   "fieldtype": "Select",
+   "label": "Case Type",
+   "options": "Civil\nCriminal\nLabour\nTax"
+  },
+  {
+   "fieldname": "column_break_mncl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "case_status",
+   "fieldtype": "Select",
+   "label": "Case Status",
+   "options": "Open\nHearing\nClosed\nStay"
+  },
+  {
+   "description": "Court\nTribunal",
+   "fieldname": "authority",
+   "fieldtype": "Data",
+   "label": "Authority "
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Data",
+   "label": "Party Name "
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Company"
+  },
+  {
+   "fieldname": "risk_level",
+   "fieldtype": "Select",
+   "label": "Risk Level",
+   "options": "Low\nMedium\nHigh"
+  },
+  {
+   "fieldname": "next_hearing_date",
+   "fieldtype": "Date",
+   "label": "Next Hearing Date"
+  },
+  {
+   "fieldname": "assigned_leagal_officer",
+   "fieldtype": "Link",
+   "label": "Assigned Legal Officer",
+   "options": "User"
+  },
+  {
+   "fieldname": "potential_liability",
+   "fieldtype": "Currency",
+   "label": "Potential Liability"
+  },
+  {
+   "fieldname": "section_break_djvh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_qecr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hearing_log",
+   "fieldtype": "Table",
+   "label": "Hearing Log",
+   "options": "Legal Hearing Log"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Legal Case",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-15 12:45:45.810766",
+ "modified_by": "Administrator",
+ "module": "Quantbit Factory Compliance",
+ "name": "Legal Case",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

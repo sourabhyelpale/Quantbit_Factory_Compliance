@@ -1,0 +1,141 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:license_no",
+ "creation": "2026-01-15 12:30:40.644875",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_u9cv",
+  "license_type",
+  "factory",
+  "valid_from",
+  "issued_on",
+  "assigned_owner",
+  "column_break_fhve",
+  "license_no",
+  "status",
+  "valid_up_to",
+  "renewable_due_on",
+  "section_break_quxu",
+  "document",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_u9cv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "license_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "License Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "license_no",
+   "fieldtype": "Data",
+   "label": "License No.",
+   "unique": 1
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Company"
+  },
+  {
+   "fieldname": "issued_on",
+   "fieldtype": "Date",
+   "label": "Issued On"
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From"
+  },
+  {
+   "fieldname": "column_break_fhve",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valid_up_to",
+   "fieldtype": "Date",
+   "label": "Valid Up To"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nExpired\nUnder\nRenewal"
+  },
+  {
+   "fieldname": "renewable_due_on",
+   "fieldtype": "Date",
+   "label": "Renewable Due On"
+  },
+  {
+   "fieldname": "section_break_quxu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document",
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "assigned_owner",
+   "fieldtype": "Link",
+   "label": "Assigned Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "License Record",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-15 12:36:51.779012",
+ "modified_by": "Administrator",
+ "module": "Quantbit Factory Compliance",
+ "name": "License Record",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
