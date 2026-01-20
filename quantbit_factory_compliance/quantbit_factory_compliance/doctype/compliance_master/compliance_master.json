@@ -71,10 +71,10 @@
    "options": "One-time\nMonthly\nQuarterly\nHalf-Yearly\nAnnual"
   },
   {
-   "description": "PCB, Labour Dept, PESO",
    "fieldname": "authority",
-   "fieldtype": "Data",
-   "label": "Authority"
+   "fieldtype": "Link",
+   "label": "Authority",
+   "options": "Authority"
   },
   {
    "default": "1",
