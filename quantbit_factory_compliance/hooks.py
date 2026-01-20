@@ -2,12 +2,34 @@ app_name = "quantbit_factory_compliance"
 app_title = "Quantbit Factory Compliance"
 app_publisher = "Quantbit Technologies"
 app_description = "Factory Compliance System"
-app_email = "shraddha.pailwan@erpdata.in"
+app_email = "contact@erpdata.in"
 app_license = "mit"
+
+
+fixtures = [
+    {
+        "dt": "Number Card",
+        "filters": [
+            ["name", "in", [
+                "High Risk Cases"
+            ]]
+        ]
+    },
+    {
+        "dt": "Dashboard Chart",
+        "filters": [
+            ["name", "in", [
+                "Liability Exposure (Sum)",
+                "Open vs Closed Cases",
+                "Upcoming Hearings"
+            ]]
+        ]
+    }
+]
+
 
 # Apps
 # ------------------
-
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
