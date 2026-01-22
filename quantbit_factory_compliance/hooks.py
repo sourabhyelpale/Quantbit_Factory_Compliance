@@ -24,6 +24,47 @@ fixtures = [
                 "Upcoming Hearings"
             ]]
         ]
+    },
+    {
+        "dt": "Number Card",
+        "filters": [
+            ["name", "in", [
+                "Active Licenses",
+                "Expired Licenses",
+                "Licenses Under Renewal"
+            ]]
+        ]
+    },
+    {
+        "dt": "Dashboard Chart",
+        "filters": [
+            ["name", "in", [
+                "Licenses Expiry Next 30 60 90 Days",
+                "License Renewals Per Month"
+            ]]
+        ]
+    },
+    {
+        "dt": "Number Card",
+        "filters": [
+            ["name", "in", [
+                "Completed This Month",
+                "Overdue Compliances",
+                "Due in Next 30 Days",
+                "High Risk Compliance"
+            ]]
+        ]
+    },
+    {
+        "dt": "Dashboard Chart",
+        "filters": [
+            ["name", "in", [
+                "Compliance Status",
+                "Compliance by Authority",
+                "Risk Level",
+                "Compliance by Factory"
+            ]]
+        ]
     }
 ]
 
@@ -167,51 +208,42 @@ fixtures = [
 # 	}
 # }
 
-# Scheduled Tasks
-# scheduler_events = {
-#     "cron": {
-#         "*/1 * * * *": [
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_task_from_factory_register"
-#         ]
-#     }
-# }
 
-# scheduler_events = {
-#     "cron": {
-#         "*/1 * * * *": [
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.print_msg",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_new_frr"
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_task"
-#         ]
-#     }
-# }
-
-# scheduler_events = {
-#     "cron": {
-#         "*/1 * * * *": [
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.print_msg",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_new_frr",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_task"
-#         ]
-#     }
-# }
+scheduler_events = {
+    "daily": [
+        # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_compliance_task",
+        # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_task",
+        # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.overdue_status_compliance_task",
+        # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.close_compliance_task_status",
+        # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.close_license_task_status",
+        "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.send_factory_regulatory_notifications"
+    ]
+}
 
 
 scheduler_events = {
     "cron": {
         "*/1 * * * *": [ 
+            "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.expire_license_frr",
             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_compliance_task",
             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_task",
-            # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_task",
-            # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_frr",
-            # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.expire_license_frr",
-            # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.submit_all_frr"
-            # "quantbit_factory_compliance.quantbit_factory_compliance.doctype.factory_regulatory_register.factory_regulatory_register.send_compliance"
-            # "quantbit_factory_compliance.quantbit_factory_compliance.doctype.factory_regulatory_register.factory_regulatory_register.cancel_all"
+            "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.overdue_status_compliance_task",
+            "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.close_compliance_task_status",
+            "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.close_license_task_status",
+            # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.send_factory_regulatory_notifications"
         ]
     }
 }
 
+
+doc_events = {
+    "Compliance Master": {
+        "on_update": "quantbit_factory_compliance.quantbit_factory_compliance.doctype.compliance_master.compliance_master.on_update"
+    },
+    "License Master": {
+        "on_update": "quantbit_factory_compliance.quantbit_factory_compliance.doctype.license.license.on_update"
+    }
+}
 
 # scheduler_events = {
 # 	"all": [
