@@ -13,16 +13,14 @@
   "column_break_jutp",
   "compliance_name",
   "applicable_act",
-  "disable",
-  "section_break_kpqq",
-  "frequency",
+  "risk_level",
+  "column_break_jpse",
   "authority",
-  "column_break_javt",
-  "grace_days",
+  "frequency",
+  "disable",
   "section_break_mtqj",
   "penalty_details",
   "section_break_ommd",
-  "risk_level",
   "compliance_mandatory_document"
  ],
  "fields": [
@@ -55,10 +53,6 @@
    "options": "Act Master"
   },
   {
-   "fieldname": "section_break_kpqq",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "frequency",
    "fieldtype": "Select",
    "label": "Frequency",
@@ -70,15 +64,6 @@
    "fieldtype": "Link",
    "label": "Authority",
    "options": "Authority"
-  },
-  {
-   "fieldname": "column_break_javt",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "grace_days",
-   "fieldtype": "Int",
-   "label": "Grace Days"
   },
   {
    "fieldname": "section_break_mtqj",
@@ -129,12 +114,16 @@
    "fieldname": "disable",
    "fieldtype": "Check",
    "label": "disable"
+  },
+  {
+   "fieldname": "column_break_jpse",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-21 11:38:57.256371",
+ "modified": "2026-01-21 15:21:21.008730",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "Compliance Master",

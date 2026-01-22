@@ -7,17 +7,21 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_murv",
-  "license_name",
+  "referance_doctype",
   "task_name",
-  "valid_upto",
+  "issued_on",
+  "due_date",
   "posting_date",
+  "close",
   "document",
   "column_break_rpzi",
+  "license_name",
   "license_no",
+  "valid_upto",
   "assigned_to",
   "status",
   "submitted_date",
-  "close"
+  "amended_from"
  ],
  "fields": [
   {
@@ -54,15 +58,13 @@
   {
    "fieldname": "posting_date",
    "fieldtype": "Date",
-   "label": "Posting Date"
+   "label": "Posting Date",
+   "read_only": 1
   },
   {
    "fieldname": "license_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "License Name",
-   "options": "Factory Regulatory Register"
+   "fieldtype": "Data",
+   "label": "License Name"
   },
   {
    "fieldname": "license_no",
@@ -85,14 +87,41 @@
   {
    "fieldname": "submitted_date",
    "fieldtype": "Date",
-   "label": "Submitted Date"
+   "label": "Submitted Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "referance_doctype",
+   "fieldtype": "Link",
+   "label": "Referance Doctype",
+   "options": "Factory Regulatory Register"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "issued_on",
+   "fieldtype": "Date",
+   "label": "Issued On"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "License Task",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-21 12:01:58.942308",
+ "modified": "2026-01-21 18:12:59.231465",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "License Task",

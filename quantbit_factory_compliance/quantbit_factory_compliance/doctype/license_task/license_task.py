@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import today
 from frappe.utils import (
     nowdate,
     getdate,
@@ -15,55 +16,43 @@ class LicenseTask(Document):
 	def before_submit(self):
 		if not self.document:
 			frappe.throw("Please upload document")
+		else:
+			self.status = "Renewed"
+
+
+	def before_submit(self):
+		self.submitted_on = today()
 
 
 	def on_submit(self):
-		frappe.db.set_value(
-                "License Task",
-                self.name,
-                "status",
-                "Closed"
-            )
 
-		doc = frappe.get_doc("Factory Regulatory Register",{"name":self.license_name})
-
-		frappe.db.set_value(
+		doc = frappe.get_doc(
 			"Factory Regulatory Register",
-			doc.name,
-			"status",
-			"Completed"
+			self.referance_doctype
 		)
 
-		frappe.db.set_value(
-			"Factory Regulatory Register",
-			doc.name,
-			"document",
-			self.document
+		frq = frappe.db.get_value("License",doc.license,"validity_period_months")
+
+		valid_upto = getdate(doc.valid_upto)
+		due_date = getdate(doc.due_date)
+
+		new_valid_upto = add_months(valid_upto, int(frq))
+
+		new_due_date = add_days(
+			new_valid_upto,
+			-int(doc.alert_before_days)
 		)
 
-		validity_months = frappe.db.get_value(
-                "License",
-                doc.license,
-                "validity_period_months"
-            )
-		
-		valid_from = getdate(doc.valid_upto)
-		valid_upto = add_months(valid_from, int(validity_months))
-		
+		doc.document = self.document
+		doc.issued_on = doc.valid_upto
+		doc.valid_upto = new_valid_upto
+		doc.due_date = new_due_date
 
-		new_frr = frappe.new_doc("Factory Regulatory Register")
+		doc.append("task_details", {
+			"period_from": self.issued_on,
+			"period_to": self.valid_upto,
+			"status": "Renewed",
+			"submitted_on": self.submitted_on,
+		})
 
-		new_frr.factory = doc.factory
-		new_frr.unit = doc.unit
-		new_frr.category = doc.category
-		new_frr.assigned_owner = doc.assigned_owner
-		new_frr.license = doc.license
-		new_frr.license_no = doc.license_no
-		new_frr.status = "Active"
-		new_frr.issued_on = self.posting_date
-		new_frr.alert_before_days = doc.alert_before_days
-		new_frr.valid_upto = valid_upto
-
-		new_frr.insert(ignore_permissions=True)
-
-		frappe.db.commit()
+		doc.save(ignore_permissions=True)

@@ -14,8 +14,8 @@ from frappe.utils import (
 def create_compliance_task():
     records = frappe.get_all(
         "Factory Regulatory Register",
-        filters={"category":"Compliance","compliance_status": "Pending","period_to": ["<=", today()]},
-        fields=["name","compliance","assigned_owner","due_date","referance_no"]
+        filters={"category":"Compliance","compliance_status": "Pending","due_date": ["<=", today()]},
+        fields=["name","compliance","assigned_owner","due_date","referance_no","period_from","period_to"]
     )
 
     for r in records:
@@ -32,6 +32,8 @@ def create_compliance_task():
         task.reference_name = r.compliance
         task.assigned_to = r.assigned_owner
         task.status = "Pending"
+        task.period_from = r.period_from
+        task.period_to = r.period_to
         task.posting_date = today()
         task.due_date = r.due_date
         task.task_name = f"Upload Document for Compliance {r.referance_no}"
@@ -49,14 +51,17 @@ def create_license_task():
         "Factory Regulatory Register",
         filters={
             "category": "License",
-            "status": "Expired"
+            "status": "Active",
+            "due_date": ["<=", today()]
         },
         fields=[
             "name",
             "license",
             "assigned_owner",
             "valid_upto",
-            "license_no"
+            "license_no",
+            "due_date",
+            "issued_on"
         ]
     )
 
@@ -65,20 +70,22 @@ def create_license_task():
             "License Task",
             {
                 "license_name": r.license,
-                "license_no": r.license_no,
-                "valid_upto": r.valid_upto,
-                "status": ["not in", ["Closed", "Cancelled"]]
+                "due_date": r.due_date
             }
         ):
             continue
 
         task = frappe.new_doc("License Task")
+        task.referance_doctype = r.name
         task.license_name = r.license
         task.license_no = r.license_no
         task.assigned_to = r.assigned_owner
         task.status = "Under Renewal"
         task.valid_upto = r.valid_upto
-        task.task_name = r.license
+        task.task_name = f"Task for {r.license} license renewal"
+        task.due_date = r.due_date
+        task.issued_on = r.issued_on
+        task.posting_date = today()
 
         task.insert(ignore_permissions=True)
 
@@ -111,7 +118,6 @@ def expire_license_frr():
         )
 
     frappe.db.commit()
-
 
 
 
@@ -319,6 +325,7 @@ def expire_license_frr():
 #             valid_upto = add_months(valid_from, int(validity_months))
 
 #             new_frr = frappe.new_doc("Factory Regulatory Register")
+
 #             new_frr.factory = task.factory
 #             new_frr.unit = task.unit
 #             new_frr.assigned_owner = task.assigned_owner
@@ -360,9 +367,9 @@ def expire_license_frr():
 
 
 # def submit_all_frr():
-#     task_submit = frappe.get_all("Factory Regulatory Register", filters={"docstatus":0}, fields=["name"])
+#     task_submit = frappe.get_all("Factory Regulatory Register", filters={"docstatus":1}, fields=["name"])
 #     for task in task_submit:
-#         frappe.db.set_value("Factory Regulatory Register",task.name,"docstatus",1)
+#         frappe.db.set_value("Factory Regulatory Register",task.name,"docstatus",2)
 
 
 

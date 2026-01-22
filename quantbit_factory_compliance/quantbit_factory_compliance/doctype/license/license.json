@@ -10,8 +10,8 @@
   "license_type",
   "license_no",
   "column_break_lghj",
-  "issuing_authority",
   "validity_period_months",
+  "issuing_authority",
   "section_break_yyqn",
   "requires_inspection",
   "column_break_nnbx",
@@ -44,9 +44,10 @@
   },
   {
    "fieldname": "issuing_authority",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Issuing Authority",
+   "options": "Authority",
    "reqd": 1
   },
   {
@@ -97,7 +98,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-16 12:47:30.719903",
+ "modified": "2026-01-21 17:25:33.509289",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "License",

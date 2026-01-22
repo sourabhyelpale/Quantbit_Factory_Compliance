@@ -10,7 +10,7 @@
   "column_break_acar",
   "factory",
   "category",
-  "submitted_date",
+  "due_date",
   "column_break_rjoz",
   "unit",
   "assigned_owner",
@@ -32,7 +32,6 @@
   "column_break_enqc",
   "compliance_name",
   "period_from",
-  "due_date",
   "column_break_mwqf",
   "referance_no",
   "period_to",
@@ -40,7 +39,8 @@
   "document",
   "remarks",
   "section_break_svzt",
-  "task_details"
+  "task_details",
+  "amended_from"
  ],
  "fields": [
   {
@@ -73,6 +73,7 @@
    "options": "Branch"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "valid_upto",
    "fieldtype": "Date",
    "label": "Valid Upto"
@@ -119,6 +120,7 @@
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "issued_on",
    "fieldtype": "Date",
    "label": "Issued On"
@@ -130,6 +132,7 @@
    "options": "User"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "document",
    "fieldtype": "Attach",
    "label": "Document"
@@ -147,9 +150,11 @@
    "options": "Compliance Master"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "due_date",
    "fieldtype": "Date",
-   "label": "Due Date"
+   "label": "Due Date",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_enqc",
@@ -192,15 +197,17 @@
    "fieldname": "frequency",
    "fieldtype": "Select",
    "label": "Frequency",
-   "options": "One-time\nMonthly\nQuarterly\nHalf-Yearly\nAnnualOne-time\nMonthly\nQuarterly\nHalf-Yearly\nAnnual",
+   "options": "One-time\nMonthly\nQuarterly\nHalf-Yearly\nAnnual",
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "period_from",
    "fieldtype": "Date",
    "label": "Period From"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "period_to",
    "fieldtype": "Date",
    "label": "Period To"
@@ -218,11 +225,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "submitted_date",
-   "fieldtype": "Date",
-   "label": "Submitted Date"
-  },
-  {
    "default": "Today",
    "fieldname": "column_break_acar",
    "fieldtype": "Column Break",
@@ -233,11 +235,22 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "task_details",
    "fieldtype": "Table",
    "label": "Task Details",
    "options": "Task Details",
    "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Factory Regulatory Register",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
@@ -245,7 +258,7 @@
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-21 12:07:52.274558",
+ "modified": "2026-01-21 17:17:49.729224",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "Factory Regulatory Register",
