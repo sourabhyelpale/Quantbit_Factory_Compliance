@@ -19,7 +19,8 @@
   "period_to",
   "status",
   "submitted_date",
-  "close"
+  "close",
+  "amended_from"
  ],
  "fields": [
   {
@@ -64,6 +65,8 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Pending\nOverdue\nCompleted\nClosed",
    "read_only": 1
@@ -100,13 +103,23 @@
    "fieldname": "period_to",
    "fieldtype": "Date",
    "label": "Period To"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Compliance Task",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-21 14:40:59.188184",
+ "modified": "2026-01-22 11:51:21.228358",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "Compliance Task",
