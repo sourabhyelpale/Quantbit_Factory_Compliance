@@ -22,7 +22,7 @@ def create_compliance_task():
         if frappe.db.exists(
             "Compliance Task",
             {
-                "reference_name": r.compliance,
+                "reference_doctype": r.name,
                 "due_date":r.due_date
             }
         ):

@@ -19,10 +19,8 @@ class ComplianceTask(Document):
 			frappe.throw("Please upload document")
 		else:
 			self.status = "Completed"
-
-
-	def before_submit(self):
-		self.submitted_on = today()
+			self.submitted_on = today()
+		
 
 	def on_submit(self):
 		doc = frappe.get_doc(
@@ -46,11 +44,11 @@ class ComplianceTask(Document):
 			return
 
 		new_due_date = add_days(
-			self.period_to,
+			new_period_to,
 			-int(doc.alert_before_days)
 		)
 
-		doc.document = self.document
+		# doc.document = self.document
 		doc.period_from = doc.period_to
 		doc.period_to = new_period_to
 		doc.due_date = new_due_date

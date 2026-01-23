@@ -113,7 +113,7 @@
    "default": "0",
    "fieldname": "disable",
    "fieldtype": "Check",
-   "label": "disable"
+   "label": "Disable"
   },
   {
    "fieldname": "column_break_jpse",
@@ -123,7 +123,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-21 15:21:21.008730",
+ "modified": "2026-01-22 15:16:30.736810",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "Compliance Master",

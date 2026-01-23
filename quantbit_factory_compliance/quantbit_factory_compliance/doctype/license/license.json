@@ -9,13 +9,10 @@
   "section_break_1duj",
   "license_type",
   "license_no",
+  "disable",
   "column_break_lghj",
   "validity_period_months",
   "issuing_authority",
-  "section_break_yyqn",
-  "requires_inspection",
-  "column_break_nnbx",
-  "renewal_required",
   "section_break_nuxg",
   "remarks",
   "amended_from"
@@ -51,26 +48,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_yyqn",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "requires_inspection",
-   "fieldtype": "Check",
-   "label": "Requires Inspection"
-  },
-  {
-   "fieldname": "column_break_nnbx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "renewal_required",
-   "fieldtype": "Check",
-   "label": "Renewal Required "
-  },
-  {
    "fieldname": "section_break_nuxg",
    "fieldtype": "Section Break"
   },
@@ -93,12 +70,18 @@
    "fieldname": "license_no",
    "fieldtype": "Data",
    "label": "License No."
+  },
+  {
+   "default": "0",
+   "fieldname": "disable",
+   "fieldtype": "Check",
+   "label": "Disable"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-21 17:25:33.509289",
+ "modified": "2026-01-22 15:16:09.017994",
  "modified_by": "Administrator",
  "module": "Quantbit Factory Compliance",
  "name": "License",
