@@ -72,19 +72,3 @@ scheduler_events = {
     ]
 }
 
-
-# scheduler_events = {
-#     "cron": {
-#         "*/1 * * * *": [ 
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.expire_license_frr",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_compliance_task",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.create_license_task",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.overdue_status_compliance_task",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.close_compliance_task_status",
-#             "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.close_license_task_status",
-#             # "quantbit_factory_compliance.quantbit_factory_compliance.schedulers.send_factory_regulatory_notifications"
-#         ]
-#     }
-# }
-
-
